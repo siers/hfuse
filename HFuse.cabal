@@ -11,7 +11,7 @@ Category:               System
 Stability:              Experimental
 Cabal-Version:          >= 1.10
 Build-Type:             Simple
-Extra-source-files:     
+Extra-source-files:
         CHANGELOG.md
         README.md
 
@@ -19,7 +19,7 @@ flag developer
   default: False
 
 Library
-  Build-Depends:          base >= 4 && < 5, unix, bytestring
+  Build-Depends:          base >= 4 && < 5, unix, bytestring, directory-tree
   Exposed-Modules:        System.Fuse
   Default-Extensions:             ForeignFunctionInterface ScopedTypeVariables EmptyDataDecls
   Includes:               dirent.h, fuse.h, fcntl.h
@@ -53,6 +53,14 @@ executable HelloFS
   hs-source-dirs: examples
   ghc-options: -threaded
   Default-Language: Haskell2010
+
+executable MemoryFS
+  buildable: True
+  build-depends:  base >= 4 && < 5, HFuse, unix, bytestring, directory-tree, text
+  main-is: MemoryFS.hs
+  hs-source-dirs: examples
+  ghc-options: -threaded
+ Default-Language: Haskell2010
 
 source-repository head
     type:       git
